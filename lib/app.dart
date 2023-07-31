@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'widget/waste_recogniser.dart';
+import 'widget/skin_recogniser.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
@@ -15,9 +15,9 @@ class MainApp extends StatelessWidget {
       ],
     );
     return MaterialApp(
-      title: 'Waste Classification App',
+      title: 'derm.ai',
       theme: ThemeData.light(),
-      home: const WasteRecogniser(),
+      home: const SkinRecogniser(),
       debugShowCheckedModeBanner: false,
     );
   }

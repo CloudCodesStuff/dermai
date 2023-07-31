@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../styles.dart';
 
-class WastePhotoView extends StatelessWidget {
+class SkinPhotoView extends StatelessWidget {
   final File? file;
-  const WastePhotoView({super.key, this.file});
+  const SkinPhotoView({super.key, this.file});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class WastePhotoView extends StatelessWidget {
       child: Container(
           //width: 300,
           decoration: BoxDecoration(
-              color: Colors.blueGrey,
+              color: const Color.fromARGB(255, 198, 205, 208),
               borderRadius: BorderRadius.all(Radius.circular(5))),
           height: 300,
           //color: Colors.blueGrey,

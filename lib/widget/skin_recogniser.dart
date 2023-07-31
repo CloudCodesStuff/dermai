@@ -5,16 +5,16 @@ import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import '../classifier/classifier.dart';
 import '../styles.dart';
-import 'waste_photo_view.dart';
+import 'skin_photo_view.dart';
 
 const _labelsFileName = 'assets/labels.txt';
 const _modelFileName = 'model_unquant.tflite';
 
-class WasteRecogniser extends StatefulWidget {
-  const WasteRecogniser({super.key});
+class SkinRecogniser extends StatefulWidget {
+  const SkinRecogniser({super.key});
 
   @override
-  State<WasteRecogniser> createState() => _WasteRecogniserState();
+  State<SkinRecogniser> createState() => _SkinRecogniserState();
 }
 
 enum _ResultStatus {
@@ -23,14 +23,14 @@ enum _ResultStatus {
   found,
 }
 
-class _WasteRecogniserState extends State<WasteRecogniser> {
+class _SkinRecogniserState extends State<SkinRecogniser> {
   bool _isAnalyzing = false;
   final picker = ImagePicker();
   File? _selectedImageFile;
 
   // Result
   _ResultStatus _resultStatus = _ResultStatus.notStarted;
-  String _wasteLabel = ''; // Name of Error Message
+  String _skinLabel = ''; // Name of Error Message
   double _accuracy = 0.0;
 
   late Classifier _classifier;
@@ -93,7 +93,7 @@ class _WasteRecogniserState extends State<WasteRecogniser> {
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
-        WastePhotoView(file: _selectedImageFile),
+        SkinPhotoView(file: _selectedImageFile),
         _buildAnalyzingText(),
       ],
     );
@@ -107,10 +107,8 @@ class _WasteRecogniserState extends State<WasteRecogniser> {
   }
 
   Widget _buildTitle() {
-    return const Text(
-      'derm.ai',
-      style: kTitleTextStyle,
-      textAlign: TextAlign.center,
+    return Center(
+      child: Image.asset('assets/logo.png'),
     );
   }
 
@@ -145,8 +143,8 @@ class _WasteRecogniserState extends State<WasteRecogniser> {
                 Text(title,
                     style: const TextStyle(
                       fontFamily: kButtonFont,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
                       color: kColorLightYellow,
                     )),
               ],
@@ -188,14 +186,14 @@ class _WasteRecogniserState extends State<WasteRecogniser> {
     final result = resultCategory.score >= 0.65
         ? _ResultStatus.found
         : _ResultStatus.notFound;
-    final wasteLabel = resultCategory.label;
+    final SkinLabel = resultCategory.label;
     final accuracy = resultCategory.score;
 
     _setAnalyzing(false);
 
     setState(() {
       _resultStatus = result;
-      _wasteLabel = wasteLabel;
+      _skinLabel = SkinLabel;
       _accuracy = accuracy;
     });
   }
@@ -204,9 +202,9 @@ class _WasteRecogniserState extends State<WasteRecogniser> {
     var title = '';
 
     if (_resultStatus == _ResultStatus.notFound) {
-      title = 'Failed to recognise';
+      title = 'Failed to classify. Please try again.';
     } else if (_resultStatus == _ResultStatus.found) {
-      title = _wasteLabel;
+      title = _skinLabel;
     } else {
       title = '';
     }
