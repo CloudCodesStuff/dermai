@@ -1,4 +1,4 @@
 0 Melanoma
 1 Acne or Roscea
-2 Herpes / STD
+2 Herpes / STDs
 3 Warts

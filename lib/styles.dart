@@ -39,6 +39,11 @@ const kResultTextStyle = TextStyle(
     fontSize: 35.0,
     color: kColorAndroidGreen,
     decoration: TextDecoration.none);
+const kResultWarningStyle = TextStyle(
+    fontFamily: kDisplayFont,
+    fontSize: 15.0,
+    color: kColorRed,
+    decoration: TextDecoration.none);
 
 const kResultRatingTextStyle = TextStyle(
     fontFamily: kMainFont,

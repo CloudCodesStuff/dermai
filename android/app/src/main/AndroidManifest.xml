@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.waste.classif">
    <application
-        android:label="Waste Classifier"
+        android:label="derm.ai"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

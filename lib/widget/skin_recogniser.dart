@@ -214,12 +214,20 @@ class _SkinRecogniserState extends State<SkinRecogniser> {
     if (_resultStatus == _ResultStatus.found) {
       accuracyLabel = 'Confidence: ${(_accuracy * 100).toStringAsFixed(2)}%';
     }
-
     return Column(
       children: [
         Text(title, style: kResultTextStyle),
         const SizedBox(height: 10),
-        Text(accuracyLabel, style: kResultRatingTextStyle)
+        Text(accuracyLabel, style: kResultRatingTextStyle),
+        const SizedBox(height: 10),
+        const Center(
+          // Wrapping the disclaimer with Center to center-align it
+          child: Text(
+            '''Disclaimer: This app does not constitute medical advice. Please consult a healthcare professional for a proper diagnosis and treatment.''',
+            style: kResultWarningStyle,
+            textAlign: TextAlign.center, // Aligning the text to the center
+          ),
+        ),
       ],
     );
   }
